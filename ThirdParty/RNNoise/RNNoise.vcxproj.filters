@@ -18,7 +18,6 @@
     <None Include="AUTHORS" />
     <None Include="COPYING" />
     <None Include="src\compile.sh" />
-    <None Include="src\rnn_train.py" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="RNNoise.cpp">

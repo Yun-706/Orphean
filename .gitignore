@@ -4,8 +4,9 @@
 .vscode/
 bin/
 bin-int/
-Orphean/x64/
+x64/
 Orphean/bin-int/
+build-*/
 
 
 # files

@@ -33,13 +33,13 @@
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
     <QtInstall>msvc2019_64</QtInstall>
-    <QtModules>quick</QtModules>
+    <QtModules>quick;multimedia</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
     <QtPathBinaries>bin</QtPathBinaries>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
     <QtInstall>msvc2019_64</QtInstall>
-    <QtModules>quick</QtModules>
+    <QtModules>quick;multimedia</QtModules>
     <QtBuildConfig>release</QtBuildConfig>
   </PropertyGroup>
   <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
@@ -68,16 +68,27 @@
     <ClCompile>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <PreprocessorDefinitions>ORPHEAN_DEBUG;$(Qt_DEFINES_);%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;$(SolutionDir)ThirdParty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <QtRcc>
       <DynamicSource>output</DynamicSource>
     </QtRcc>
+    <QtMoc>
+      <LanguageStandard>
+      </LanguageStandard>
+    </QtMoc>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;$(SolutionDir)ThirdParty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
+    <QtMoc>
+      <LanguageStandard>
+      </LanguageStandard>
+    </QtMoc>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
     <ClCompile>
@@ -88,7 +99,7 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -106,22 +117,42 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Devices\AInput.cpp" />
+    <ClCompile Include="src\Devices\AOutput.cpp" />
+    <ClCompile Include="src\Orphean.cpp" />
+    <ClCompile Include="src\Devices\AudioDevice.cpp" />
     <ClCompile Include="src\EffectThread.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\pch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <None Include="qrc\qml\DevicesComboBox.qml" />
     <QtRcc Include="qml.qrc" />
+    <None Include="qrc\qml\DeviceWidget.qml" />
     <None Include="qrc\qml\main.qml" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\AudioDevice.h" />
+    <ClInclude Include="src\Devices.h" />
+    <ClInclude Include="src\Devices\AInput.h" />
+    <ClInclude Include="src\Devices\AOutput.h" />
+    <ClInclude Include="src\Effectors.h" />
+    <QtMoc Include="src\Orphean.h" />
+    <ClInclude Include="src\Devices\AudioDevice.h" />
     <ClInclude Include="src\Effectors\Effector.hpp" />
     <ClInclude Include="src\Effectors\eRNNoise.hpp" />
     <ClInclude Include="src\EffectThread.h" />
     <ClInclude Include="src\OrpheanAssert.hpp" />
+    <ClInclude Include="src\pch.h" />
     <ClInclude Include="src\PCMBuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="qrc\img\icon.ico" />
     <Image Include="qrc\img\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ThirdParty\RNNoise\RNNoise.vcxproj">
+      <Project>{8c92511e-a06d-4d3b-b02f-fa5903f30003}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

@@ -2,11 +2,8 @@
 
 #include "Effectors/Effector.hpp"
 
-namespace Orphean
+class EffectThread
 {
-	class EffectThread
-	{
 		
-	};
-}
+};
 
