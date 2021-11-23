@@ -10,5 +10,4 @@ Orphean/bin-int/
 
 # files
 
-*.sln
-*.vcxproj*
+*.user
