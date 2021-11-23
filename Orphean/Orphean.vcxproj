@@ -13,7 +13,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{BB1AA458-3B36-46E3-B597-D2148BE25970}</ProjectGuid>
     <Keyword>QtVS_v304</Keyword>
-    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0.19041.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0</WindowsTargetPlatformVersion>
     <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0.19041.0</WindowsTargetPlatformVersion>
     <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
     <ProjectName>Orphean</ProjectName>
@@ -21,11 +21,11 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
@@ -67,7 +67,12 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <PreprocessorDefinitions>ORPHEAN_DEBUG;$(Qt_DEFINES_);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <QtRcc>
+      <DynamicSource>output</DynamicSource>
+    </QtRcc>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -101,25 +106,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Orphean\EffectThread.cpp" />
-    <ClCompile Include="src\Orphean\main.cpp" />
+    <ClCompile Include="src\EffectThread.cpp" />
+    <ClCompile Include="src\main.cpp" />
     <QtRcc Include="qml.qrc" />
     <None Include="qrc\qml\main.qml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="src\dependencies\RNNoise\RNNoise.vcxproj">
-      <Project>{8c92511e-a06d-4d3b-b02f-fa5903f30003}</Project>
-    </ProjectReference>
+    <ClInclude Include="src\AudioDevice.h" />
+    <ClInclude Include="src\Effectors\Effector.hpp" />
+    <ClInclude Include="src\Effectors\eRNNoise.hpp" />
+    <ClInclude Include="src\EffectThread.h" />
+    <ClInclude Include="src\OrpheanAssert.hpp" />
+    <ClInclude Include="src\PCMBuffer.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\dependencies\dependencies.h" />
-    <ClInclude Include="src\Orphean\Effectors\Effector.hpp" />
-    <ClInclude Include="src\Orphean\Effectors\eRNNoise.hpp" />
-    <ClInclude Include="src\Orphean\EffectThread.h" />
-    <ClInclude Include="src\Orphean\PCMBuffer.h" />
-    <ClInclude Include="src\Orphean\shiny.h" />
-    <ClInclude Include="src\Orphean\AudioDevice.h" />
-    <ClInclude Include="src\Orphean\YunAssert.hpp" />
+    <Image Include="qrc\img\icon.ico" />
+    <Image Include="qrc\img\icon.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

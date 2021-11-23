@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31729.503
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Orphean", "Orphean\Orphean.vcxproj", "{BB1AA458-3B36-46E3-B597-D2148BE25970}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RNNoise", "Orphean\src\dependencies\RNNoise\RNNoise.vcxproj", "{8C92511E-A06D-4D3B-B02F-FA5903F30003}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThirdParty", "ThirdParty", "{19F5B196-35A4-4D3D-A084-5F0F3D41BB79}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RNNoise", "ThirdParty\RNNoise\RNNoise.vcxproj", "{8C92511E-A06D-4D3B-B02F-FA5903F30003}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +34,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8C92511E-A06D-4D3B-B02F-FA5903F30003} = {19F5B196-35A4-4D3D-A084-5F0F3D41BB79}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2BFD7D31-ABE8-4B2E-95C5-646BDEC76E58}

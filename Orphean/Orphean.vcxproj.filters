@@ -19,43 +19,45 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Orphean\main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <QtRcc Include="qml.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
     <None Include="qrc\qml\main.qml">
       <Filter>Source Files</Filter>
     </None>
-    <ClCompile Include="src\Orphean\EffectThread.cpp">
+    <ClCompile Include="src\EffectThread.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Orphean\EffectThread.h">
+    <ClInclude Include="src\AudioDevice.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Orphean\Effectors\Effector.hpp">
+    <ClInclude Include="src\EffectThread.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Orphean\shiny.h">
+    <ClInclude Include="src\OrpheanAssert.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Orphean\YunAssert.hpp">
+    <ClInclude Include="src\PCMBuffer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Orphean\Effectors\eRNNoise.hpp">
+    <ClInclude Include="src\Effectors\Effector.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\dependencies\dependencies.h">
+    <ClInclude Include="src\Effectors\eRNNoise.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Orphean\PCMBuffer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Orphean\AudioDevice.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="qrc\img\icon.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="qrc\img\icon.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Effector.hpp"
-#include "../../dependencies/dependencies.h"
+#include <RNNoise/RNNoise.h>
 
 namespace Orphean
 {
