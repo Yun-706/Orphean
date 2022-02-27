@@ -8,15 +8,18 @@ class Orphean : public QObject
 {
 	Q_OBJECT
     QQmlApplicationEngine engine;
+    QStringList inputDevices;
+    QStringList outputDevices;
 
-    QMap<QString, OrpheanAudioDevice> m_devices;
+    QMap<QString, OrpheanAudioDevice> devices;
 public:
 	Orphean();
     static Orphean* getInstance();
 
     bool openInputDevice(QString devName);
     bool openOutputDevice(QString devName);
-
+    void getInputDevices();
+    void getOutputDevices();
 
 private:
     void init();

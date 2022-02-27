@@ -3,6 +3,11 @@ import Orphean 1.0
 
 Rectangle {
 
+    Component.onCompleted: {
+        orphean.getInputDevices();
+        orphean.getOutputDevices();
+    }
+
     Orphean {
         id: orphean
     }
@@ -25,8 +30,6 @@ Rectangle {
         else if (x > xPosMax) x = xPosMax;
         if (y < 0) y = 0;
         else if (y > yPosMax) y = yPosMax;
-
-        console.log(orphean.openInputDevice("hello"));
     }
 
     Text {
@@ -58,13 +61,15 @@ Rectangle {
         }
     }
 
-
     DevicesComboBox {
+        id: devicesList
         objectName: "DevicesComboBox"
         width: parent.width - 20
         height: 26
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 10
         anchors.horizontalCenter: parent.horizontalCenter
+
+        model: outputAudioDeviceNames
     }
 }

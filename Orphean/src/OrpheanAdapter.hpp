@@ -13,4 +13,12 @@ public:
     Q_INVOKABLE bool openOutputDevice(QString devName) {
         return Orphean::getInstance()->openOutputDevice(devName);
     }
+
+    Q_INVOKABLE void getInputDevices() {
+        return Orphean::getInstance()->getInputDevices();
+    }
+
+    Q_INVOKABLE void getOutputDevices() {
+        return Orphean::getInstance()->getOutputDevices();
+    }
 };

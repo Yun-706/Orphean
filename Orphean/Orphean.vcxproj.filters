@@ -96,6 +96,9 @@
     <QtMoc Include="src\Orphean.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="src\OrpheanAdapter.hpp">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <None Include="qrc\qml\DevicesComboBox.qml">
@@ -104,5 +107,7 @@
     <None Include="qrc\qml\DeviceWidget.qml">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="Orphean.pri" />
+    <None Include="Orphean.pro" />
   </ItemGroup>
 </Project>

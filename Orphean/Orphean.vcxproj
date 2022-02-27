@@ -126,6 +126,8 @@
     <ClCompile Include="src\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <None Include="Orphean.pri" />
+    <None Include="Orphean.pro" />
     <None Include="qrc\qml\DevicesComboBox.qml" />
     <QtRcc Include="qml.qrc" />
     <None Include="qrc\qml\DeviceWidget.qml" />
@@ -141,6 +143,7 @@
     <ClInclude Include="src\Effectors\Effector.hpp" />
     <ClInclude Include="src\Effectors\eRNNoise.hpp" />
     <ClInclude Include="src\EffectThread.h" />
+    <QtMoc Include="src\OrpheanAdapter.hpp" />
     <ClInclude Include="src\OrpheanAssert.hpp" />
     <ClInclude Include="src\pch.h" />
     <ClInclude Include="src\PCMBuffer.h" />
